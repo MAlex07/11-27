@@ -1,4 +1,4 @@
-import { Controller, Get, Render } from '@nestjs/common';
+import { Controller, Delete, Get, Param, Render } from '@nestjs/common';
 import { AppService } from './app.service.js';
 
 @Controller()
@@ -12,4 +12,20 @@ export class AppController {
       title: 'My First NestJS App'
     }
   }
+
+  @Get('weather')
+  getWeather(){
+    return this.appService.weather()
+  }
+
+  @Get('weather/:id')
+  getSingleWeather(@Param('id') id: string){
+    return this.appService.singleWeather(Number(id));
+  }
+
+  @Delete('weather/:id')
+  deleteWeather(@Param('id') id: string){
+    return this.appService.deleteWeather(Number(id));
+  }
+
 }

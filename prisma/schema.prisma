@@ -11,3 +11,17 @@ generator client {
 datasource db {
   provider = "mysql"
 }
+
+model Forecast {
+  id Int @id @default(autoincrement())
+  tamp Int
+  weather String
+}
+
+model Location {
+  id Int @id @default(autoincrement())
+  name String
+  lat Decimal
+  lon Decimal
+}
+
